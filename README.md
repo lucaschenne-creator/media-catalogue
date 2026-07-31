@@ -1,6 +1,6 @@
 # Media Catalogue
 
-A private, single-user catalogue for images and manga. This repository currently contains the first-stage React application shell; data loading, search, image viewing, authentication, R2 integration, and deployment will be added in later verified stages.
+A private, single-user catalogue for images and manga. This repository currently contains the Phase 2 TypeScript data layer with fictional local fixtures; search, image viewing, authentication, R2 integration, and deployment will be added in later verified stages.
 
 The full product and delivery plan is documented in [`docs/PROJECT_PLAN.md`](docs/PROJECT_PLAN.md).
 
@@ -33,4 +33,4 @@ npm run build
 
 ## Current phase
 
-Phase 1 — image and manga project shell: routing, shared navigation, responsive layout, documentation, and build verification.
+Phase 2 — TypeScript data types, Zod catalog schemas, fictional local fixtures, and shared loading, error, and empty-state handling.

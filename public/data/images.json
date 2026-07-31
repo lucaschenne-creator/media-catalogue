@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-01T09:00:00+08:00",
+  "items": [
+    { "id": "d47b5a2c-6e78-4e47-9d31-1e30a2b3c401", "title": "晨光窗台", "originalKey": "images/original/7e34ca09-8b19-4cb9-a672-4481d9ff1082.jpg", "thumbnailKey": "images/thumbnails/7e34ca09-8b19-4cb9-a672-4481d9ff1082.jpg", "sourceUrl": "https://example.com/fictional-window", "tags": ["室內", "晨光"], "addedAt": "2026-07-28T14:20:00+08:00" },
+    { "id": "83f15bb6-f494-42a2-9d2c-9417171f3aaf", "title": "雨後的郵筒", "originalKey": "images/original/ed7031a6-aacd-4867-943a-5b1ab0d006c4.jpg", "thumbnailKey": "images/thumbnails/ed7031a6-aacd-4867-943a-5b1ab0d006c4.jpg", "tags": ["街景", "雨天"], "addedAt": "2026-07-30T11:05:00+08:00" },
+    { "id": "a185ce09-52e4-4e3a-b5d9-50a0ac4c93cf", "title": "橘色盆栽", "originalKey": "images/original/54be77cb-d35c-4be1-a7bb-6d27de6cf62c.jpg", "thumbnailKey": "images/thumbnails/54be77cb-d35c-4be1-a7bb-6d27de6cf62c.jpg", "tags": ["植物", "靜物"], "addedAt": "2026-07-31T16:40:00+08:00" }
+  ]
+}

@@ -178,6 +178,68 @@ h1 {
   margin-top: 54px;
 }
 
+.catalogue-status,
+.catalogue-count {
+  margin: 42px 0 0;
+  color: #59635e;
+  line-height: 1.65;
+}
+
+.catalogue-status {
+  max-width: 720px;
+  padding: 18px 20px;
+  border-left: 4px solid var(--accent);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.catalogue-status--error {
+  border-color: #a24332;
+  color: #782e22;
+}
+
+.catalogue-count {
+  color: var(--accent);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.catalogue-item {
+  padding: 12px 12px 20px;
+  border: 1px solid rgba(31, 41, 37, 0.1);
+  background: rgba(255, 255, 255, 0.36);
+}
+
+.catalogue-item h2 {
+  margin: 0 4px 8px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.catalogue-item__author {
+  margin: 0 4px 14px;
+  color: #65706a;
+  font-size: 0.9rem;
+}
+
+.catalogue-item__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 4px;
+  padding: 0;
+  list-style: none;
+}
+
+.catalogue-item__tags li {
+  padding: 4px 8px;
+  border-radius: 999px;
+  color: #4e5c56;
+  background: rgba(31, 41, 37, 0.09);
+  font-size: 0.75rem;
+}
+
 .placeholder-card {
   padding: 12px 12px 20px;
   border: 1px solid rgba(31, 41, 37, 0.1);

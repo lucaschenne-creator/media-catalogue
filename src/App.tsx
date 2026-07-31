@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { AppLayout } from './components/AppLayout'
 import { CataloguePage } from './pages/CataloguePage'
+import { imageCatalogSchema, mangaCatalogSchema } from './schemas'
 import './App.css'
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
               title="圖片庫"
               description="整理圖片、標題與標籤。縮圖瀏覽與 Lightbox 將在後續階段加入。"
               accent="sage"
+              dataUrl="/data/images.json"
+              schema={imageCatalogSchema}
             />
           }
         />
@@ -27,6 +30,8 @@ function App() {
               title="漫畫收藏"
               description="集中管理封面、作者、來源與多重標籤，快速回到收藏作品。"
               accent="clay"
+              dataUrl="/data/manga.json"
+              schema={mangaCatalogSchema}
             />
           }
         />
