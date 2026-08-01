@@ -213,50 +213,56 @@ type MangaItem = {
 
 驗收：錯誤 JSON 顯示可理解訊息，無 `any`，測試與 build 通過。
 
-### 階段 3：搜尋與 Multi-tag
+### 階段 3：搜尋
 
 - 共用搜尋與篩選 hook。
-- 支援 title、author、tags、AND／OR、結果數量與清除控制。
-- 補標題、作者、AND、OR、空結果測試。
+- 支援 title、author、tags、結果數量與清除搜尋控制。
+- 補標題、作者、標籤與空結果測試。
 
-### 階段 4：卡片與響應式 Grid
+### 階段 4：Multi-tag 篩選
+
+- 顯示目前頁面的所有 Tag，並支援多選。
+- 支援 AND／OR（預設 AND）、清除所有 Tag、搜尋與 Tag 同時使用，以及結果數量。
+- 補單一 Tag、多 Tag AND／OR、搜尋加 Tag、清除 Tag 與無符合結果測試。
+
+### 階段 5：卡片與響應式 Grid
 
 - 圖片與漫畫卡片、lazy loading、fallback、鍵盤操作。
 - 漫畫外部連結安全屬性。
 - 列表只載入圖片縮圖或漫畫封面，不載入圖片原圖。
 
-### 階段 5：圖片 Lightbox
+### 階段 6：圖片 Lightbox
 
 - 完成圖片 Lightbox、前後瀏覽、鍵盤操作、焦點管理與來源連結。
 - 僅在使用者打開 Lightbox 時才載入圖片原圖。
 
-### 階段 6：媒體 URL 整合
+### 階段 7：媒體 URL 整合
 
 - 建立 `mediaUrl` utility 與 `.env.example`。
 - 使用公開 R2 base URL 與不可猜測 object key。
 - 缺少設定時顯示清楚錯誤。
 
-### 階段 7：資料驗證工具
+### 階段 8：資料驗證工具
 
 - 建立 `npm run validate:data`。
 - 驗證 schema、重複 ID／tag、URL 與 object key。
 - 讓 build 前執行資料驗證。
 
-### 階段 8：登入與私人 Metadata API
+### 階段 9：登入與私人 Metadata API
 
 - 建立 Worker／Pages Functions。
 - 單一密碼、簽名 Cookie、登出、rate limiting。
 - 將真實 JSON 放進 Private R2，由登入後 API 讀取。
 - 移除正式環境對公開 fixture 的依賴。
 
-### 階段 9：品質與安全驗收
+### 階段 10：品質與安全驗收
 
 - 單元、整合與必要的瀏覽器測試。
 - Accessibility、鍵盤、焦點、媒體錯誤與手機版檢查。
 - 確認 secrets、真實 metadata、媒體檔案未進入 Git 歷史。
 - 驗證未登入時 API 無法存取。
 
-### 階段 10：Cloudflare 部署
+### 階段 11：Cloudflare 部署
 
 - 以 Private GitHub repository 連接 Cloudflare。
 - 設定 Pages、Worker、R2 bindings、Secrets 與 custom domain。
@@ -309,12 +315,13 @@ Codex 不應自行 commit 或 push；必須由使用者明確要求。
 
 ## 13. 當前狀態與立即下一步
 
-截至 2026-08-01，repository 已初始化 Git，且「階段 1：專案骨架」已完成：
+截至 2026-08-01，repository 已完成「階段 1：專案骨架」、「階段 2：資料層與假資料」、「階段 3：搜尋」與「階段 4：Multi-tag 篩選」：
 
 - React＋TypeScript＋Vite 專案可建置。
 - 圖片與漫畫兩個路由及共用導覽已建立。
 - 基本桌面／手機響應式版面已建立。
 - `AGENTS.md`、README、安全忽略規則與本規劃書已建立。
-- lint、production build 與本機入口路徑檢查均通過。
+- 可在目前頁面選擇多個 Tag，以預設 AND 或 OR 模式篩選，且可與搜尋同時使用。
+- lint、測試、production build 與本機入口路徑檢查均通過。
 
-下一個可獨立驗收的成果是「階段 2：資料層與假資料」。開始前應先由使用者檢查目前 diff 與本機畫面，確認後再建立第一個 commit。本文件是後續所有實作與新任務的參考點。
+下一個可獨立驗收的成果是「階段 5：卡片與響應式 Grid」。開始前應先由使用者檢查目前 diff 與本機畫面，確認後再建立下一個 commit。本文件是後續所有實作與新任務的參考點。

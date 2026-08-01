@@ -17,7 +17,18 @@ type CataloguePageProps<T extends CatalogueItem> = {
 export function CataloguePage<T extends CatalogueItem>({ accent, dataUrl, description, eyebrow, schema, title }: CataloguePageProps<T>) {
   const state = useCatalogData(dataUrl, schema)
   const items = state.status === 'success' ? state.catalog.items : []
-  const { clearSearch, filteredItems, searchTerm, setSearchTerm } = useCatalogueSearch(items)
+  const {
+    clearSearch,
+    clearTags,
+    filteredItems,
+    searchTerm,
+    selectedTags,
+    setSearchTerm,
+    setTagMatchMode,
+    tagMatchMode,
+    tags,
+    toggleTag,
+  } = useCatalogueSearch(items)
   let content: ReactNode
   if (state.status === 'loading') {
     content = <p className="catalogue-status" role="status">正在載入資料…</p>
@@ -26,10 +37,9 @@ export function CataloguePage<T extends CatalogueItem>({ accent, dataUrl, descri
   } else if (items.length === 0) {
     content = <p className="catalogue-status">目前沒有可顯示的收藏。</p>
   } else if (filteredItems.length === 0) {
-    content = <p className="catalogue-status">找不到符合「{searchTerm.trim()}」的收藏。</p>
+    content = <p className="catalogue-status">找不到符合目前搜尋與 Tag 條件的收藏。</p>
   } else {
     content = <>
-      <p className="catalogue-count">顯示 {filteredItems.length}／{items.length} 筆虛構示範資料</p>
       <div className="placeholder-grid" aria-label={`${title}資料列表`}>
         {filteredItems.map((item) => <article className="catalogue-item" key={item.id}>
           <div className="placeholder-card__media" aria-hidden="true" />
@@ -50,6 +60,24 @@ export function CataloguePage<T extends CatalogueItem>({ accent, dataUrl, descri
         <button type="button" onClick={clearSearch} disabled={!searchTerm}>清除</button>
       </div>
     </form>
+    {state.status === 'success' && items.length > 0 && <section className="catalogue-tags" aria-labelledby={`catalogue-tags-${accent}`}>
+      <div className="catalogue-tags__heading">
+        <div>
+          <p className="catalogue-tags__label">篩選條件</p>
+          <h2 id={`catalogue-tags-${accent}`}>Tag</h2>
+        </div>
+        <button type="button" className="catalogue-tags__clear" onClick={clearTags} disabled={selectedTags.length === 0}>清除所有 Tag</button>
+      </div>
+      <fieldset className="catalogue-tags__mode">
+        <legend>多個 Tag 的比對方式</legend>
+        <label><input type="radio" name={`tag-match-mode-${accent}`} value="and" checked={tagMatchMode === 'and'} onChange={() => setTagMatchMode('and')} />AND（必須全部符合）</label>
+        <label><input type="radio" name={`tag-match-mode-${accent}`} value="or" checked={tagMatchMode === 'or'} onChange={() => setTagMatchMode('or')} />OR（符合任一即可）</label>
+      </fieldset>
+      <div className="catalogue-tags__list" aria-label="可選擇的 Tag">
+        {tags.map((tag) => <button type="button" key={tag} className="catalogue-tag" aria-pressed={selectedTags.includes(tag)} onClick={() => toggleTag(tag)}>{tag}</button>)}
+      </div>
+    </section>}
+    {state.status === 'success' && items.length > 0 && <p className="catalogue-count" role="status">顯示 {filteredItems.length}／{items.length} 筆虛構示範資料</p>}
     {content}
   </section>
 }

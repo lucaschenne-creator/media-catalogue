@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { filterCatalogueItems } from './useCatalogueSearch'
+import { filterCatalogueItems, getCatalogueTags } from './useCatalogueSearch'
 
 const images = [
   { id: 'image-1', title: 'Morning Window', tags: ['室內', 'Sunlight'] },
@@ -45,5 +45,43 @@ describe('filterCatalogueItems', () => {
 
   it('returns no items when nothing matches', () => {
     expect(filterCatalogueItems(manga, 'not-found')).toEqual([])
+  })
+
+  it('returns every distinct tag in alphabetical order', () => {
+    expect(getCatalogueTags(manga)).toEqual(['奇幻', '日常', '短篇'])
+  })
+
+  it('filters by a single tag', () => {
+    expect(filterCatalogueItems(manga, '', ['日常']).map((item) => item.id)).toEqual(['manga-1'])
+  })
+
+  it('requires every selected tag in AND mode', () => {
+    const items = [
+      { id: 'one', title: 'One', tags: ['日常', '短篇'] },
+      { id: 'two', title: 'Two', tags: ['日常'] },
+      { id: 'three', title: 'Three', tags: ['短篇'] },
+    ]
+    expect(filterCatalogueItems(items, '', ['日常', '短篇']).map((item) => item.id)).toEqual(['one'])
+  })
+
+  it('returns any matching item in OR mode', () => {
+    const items = [
+      { id: 'one', title: 'One', tags: ['日常', '短篇'] },
+      { id: 'two', title: 'Two', tags: ['日常'] },
+      { id: 'three', title: 'Three', tags: ['奇幻'] },
+    ]
+    expect(filterCatalogueItems(items, '', ['日常', '奇幻'], 'or').map((item) => item.id)).toEqual(['one', 'two', 'three'])
+  })
+
+  it('combines search and tag filters', () => {
+    expect(filterCatalogueItems(manga, 'Paper', ['日常']).map((item) => item.id)).toEqual(['manga-1'])
+  })
+
+  it('returns no items when selected tags do not match', () => {
+    expect(filterCatalogueItems(manga, '', ['奇幻', '日常']).map((item) => item.id)).toEqual([])
+  })
+
+  it('returns every item again after clearing all tags', () => {
+    expect(filterCatalogueItems(manga, '', [])).toEqual(manga)
   })
 })
