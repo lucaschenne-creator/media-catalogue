@@ -12,10 +12,6 @@ if (!rootElement) {
 
 createRoot(rootElement).render(
   <StrictMode>
-    <BrowserRouter
-      future={{ v7_relativeSplatPath: true, v7_startTransition: true }}
-    >
-      <App />
-    </BrowserRouter>
+    <BrowserRouter><App /></BrowserRouter>
   </StrictMode>,
 )

@@ -1,6 +1,6 @@
 # Media Catalogue
 
-A private, single-user catalogue for images and manga. This repository currently contains the Phase 2 TypeScript data layer with fictional local fixtures; search, image viewing, authentication, R2 integration, and deployment will be added in later verified stages.
+A private, single-user catalogue for images and manga. This repository currently contains the Phase 3 TypeScript data layer and browser-side catalogue search with fictional local fixtures; image viewing, authentication, R2 integration, and deployment will be added in later verified stages.
 
 The full product and delivery plan is documented in [`docs/PROJECT_PLAN.md`](docs/PROJECT_PLAN.md).
 
@@ -22,6 +22,7 @@ Open the local URL printed by Vite. The application includes routes for the imag
 
 ```bash
 npm run lint
+npm run test
 npm run build
 ```
 
@@ -33,4 +34,4 @@ npm run build
 
 ## Current phase
 
-Phase 2 — TypeScript data types, Zod catalog schemas, fictional local fixtures, and shared loading, error, and empty-state handling.
+Phase 3 — Shared browser-side catalogue search for titles, tags, and manga authors, with case-insensitive English and partial Chinese/Japanese matching.
