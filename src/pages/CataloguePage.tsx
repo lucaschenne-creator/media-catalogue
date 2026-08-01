@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import type { z } from 'zod'
+import { MediaCard } from '../components/MediaCard'
 import { useCatalogData } from '../hooks/useCatalogData'
 import { useCatalogueSearch } from '../hooks/useCatalogueSearch'
 import type { Catalog, ImageItem, MangaItem } from '../types'
@@ -40,19 +41,16 @@ export function CataloguePage<T extends CatalogueItem>({ accent, dataUrl, descri
     content = <p className="catalogue-status">找不到符合目前搜尋與 Tag 條件的收藏。</p>
   } else {
     content = <>
-      <div className="placeholder-grid" aria-label={`${title}資料列表`}>
-        {filteredItems.map((item) => <article className="catalogue-item" key={item.id}>
-          <div className="placeholder-card__media" aria-hidden="true" />
-          <h2>{item.title}</h2>
-          {'author' in item && <p className="catalogue-item__author">作者：{item.author}</p>}
-          <ul className="catalogue-item__tags" aria-label="標籤">{item.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
-        </article>)}
+      <div className="media-grid" aria-label={`${title}資料列表`}>
+        {filteredItems.map((item) => 'author' in item
+          ? <MediaCard key={item.id} type="manga" title={item.title} author={item.author} tags={item.tags} mediaKey={item.coverKey} sourceUrl={item.sourceUrl} alt={`《${item.title}》的封面`} />
+          : <MediaCard key={item.id} type="image" title={item.title} tags={item.tags} mediaKey={item.thumbnailKey} alt={item.title} />)}
       </div>
     </>
   }
   return <section className={`catalogue-page catalogue-page--${accent}`}>
     <div className="page-heading"><p className="eyebrow">{eyebrow}</p><h1>{title}</h1><p className="page-description">{description}</p></div>
-    <div className="phase-card"><div className="phase-card__number" aria-hidden="true">03</div><div><p className="phase-card__label">目前階段</p><h2>前端搜尋已就位</h2><p>可依標題與標籤搜尋；漫畫也會比對作者。所有比對均在瀏覽器中完成。</p></div></div>
+    <div className="phase-card"><div className="phase-card__number" aria-hidden="true">05</div><div><p className="phase-card__label">目前階段</p><h2>卡片瀏覽已就位</h2><p>圖片只會載入縮圖；漫畫只會載入封面。圖片原圖會在後續 Lightbox 階段才載入。</p></div></div>
     <form className="catalogue-search" role="search" onSubmit={(event) => event.preventDefault()}>
       <label htmlFor={`catalogue-search-${accent}`}>搜尋{title}</label>
       <div className="catalogue-search__controls">

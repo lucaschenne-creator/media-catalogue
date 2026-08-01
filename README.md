@@ -1,6 +1,6 @@
 # Media Catalogue
 
-A private, single-user catalogue for images and manga. This repository currently contains the Phase 3 TypeScript data layer and browser-side catalogue search with fictional local fixtures; image viewing, authentication, R2 integration, and deployment will be added in later verified stages.
+A private, single-user catalogue for images and manga. This repository currently contains the Phase 5 catalogue cards and responsive grid, backed by fictional local fixtures; image viewing, authentication, R2 integration, and deployment will be added in later verified stages.
 
 The full product and delivery plan is documented in [`docs/PROJECT_PLAN.md`](docs/PROJECT_PLAN.md).
 
@@ -34,4 +34,4 @@ npm run build
 
 ## Current phase
 
-Phase 3 — Shared browser-side catalogue search for titles, tags, and manga authors, with case-insensitive English and partial Chinese/Japanese matching.
+Phase 5 — Responsive image and manga cards with lazy-loaded thumbnail or cover requests, clear media fallbacks, keyboard focus, and safely linked manga sources. Public media URL configuration and image Lightbox viewing remain later phases.
