@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-01T09:00:00+08:00",
+  "items": [
+    { "id": "62f5b281-6208-445a-ae1a-1b3798d2af98", "title": "月台上的紙飛機", "author": "林澄", "coverKey": "manga/covers/bf0d98aa-8420-446d-a5da-7246bf4e0ce9.jpg", "sourceUrl": "https://example.com/fictional-paper-airplane", "tags": ["日常", "短篇"], "addedAt": "2026-07-22T10:00:00+08:00" },
+    { "id": "4e75989f-293f-44d4-87ee-25d378b7868c", "title": "圖書館的第七盞燈", "author": "周岑", "coverKey": "manga/covers/d2776619-55c5-468e-a032-8307bd78a065.jpg", "sourceUrl": "https://example.com/fictional-library-lamp", "tags": ["奇幻", "校園"], "addedAt": "2026-07-26T15:30:00+08:00" },
+    { "id": "a79a044c-4945-41e1-87f4-a2c5304a4719", "title": "晚班咖啡屋", "author": "葉青", "coverKey": "manga/covers/aa577162-d94e-4530-8d88-aacbba330d6c.jpg", "sourceUrl": "https://example.com/fictional-night-cafe", "tags": ["日常", "料理"], "addedAt": "2026-07-31T18:15:00+08:00" }
+  ]
+}
